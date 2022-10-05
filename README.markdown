@@ -118,8 +118,9 @@ get accessToken (set accessToken "lens token" client)
 ``` haskell
   let authorizeUrl = buildAuthorizeUrl 1790 "http://localhost" $ with
         [ set approvalPrompt False
-        , set privateScope True
-        , set writeScope True
+        , set readScope True
+        , set activityReadScope True
+        , set activityWriteScope True
         , set state "..."
         ]
   print (authorizeUrl :: String)

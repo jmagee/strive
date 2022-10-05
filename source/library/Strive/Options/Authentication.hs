@@ -14,8 +14,13 @@ import Network.HTTP.Types (QueryLike, toQuery)
 -- | 'Strive.Actions.buildAuthorizeUrl'
 data BuildAuthorizeUrlOptions = BuildAuthorizeUrlOptions
   { buildAuthorizeUrlOptions_approvalPrompt :: Bool
-  , buildAuthorizeUrlOptions_privateScope :: Bool
-  , buildAuthorizeUrlOptions_writeScope :: Bool
+  , buildAuthorizeUrlOptions_readScope :: Bool
+  , buildAuthorizeUrlOptions_readAllScope :: Bool
+  , buildAuthorizeUrlOptions_profileReadAllScope :: Bool
+  , buildAuthorizeUrlOptions_profileWriteScope :: Bool
+  , buildAuthorizeUrlOptions_activityReadScope :: Bool
+  , buildAuthorizeUrlOptions_activityReadAllScope :: Bool
+  , buildAuthorizeUrlOptions_activityWriteScope :: Bool
   , buildAuthorizeUrlOptions_state :: String
   }
   deriving Show
@@ -23,8 +28,13 @@ data BuildAuthorizeUrlOptions = BuildAuthorizeUrlOptions
 instance Default BuildAuthorizeUrlOptions where
   def = BuildAuthorizeUrlOptions
     { buildAuthorizeUrlOptions_approvalPrompt = False
-    , buildAuthorizeUrlOptions_privateScope = False
-    , buildAuthorizeUrlOptions_writeScope = False
+    , buildAuthorizeUrlOptions_readScope = False
+    , buildAuthorizeUrlOptions_readAllScope = False
+    , buildAuthorizeUrlOptions_profileReadAllScope = False
+    , buildAuthorizeUrlOptions_profileWriteScope = False
+    , buildAuthorizeUrlOptions_activityReadScope = False
+    , buildAuthorizeUrlOptions_activityReadAllScope = False
+    , buildAuthorizeUrlOptions_activityWriteScope = False
     , buildAuthorizeUrlOptions_state = ""
     }
 
@@ -42,10 +52,25 @@ instance QueryLike BuildAuthorizeUrlOptions where
       <> if null scopes then [] else [("scope", intercalate "," scopes)]
    where
     scopes = catMaybes
-      [ if buildAuthorizeUrlOptions_privateScope options
-        then Just "view_private"
+      [ if buildAuthorizeUrlOptions_readScope options
+        then Just "read"
         else Nothing
-      , if buildAuthorizeUrlOptions_writeScope options
-        then Just "write"
+      , if buildAuthorizeUrlOptions_readAllScope options
+        then Just "read_all"
+        else Nothing
+      , if buildAuthorizeUrlOptions_profileReadAllScope options
+        then Just "profile:read_all"
+        else Nothing
+      , if buildAuthorizeUrlOptions_profileWriteScope options
+        then Just "profile:write"
+        else Nothing
+      , if buildAuthorizeUrlOptions_activityReadScope options
+        then Just "activity:read"
+        else Nothing
+      , if buildAuthorizeUrlOptions_activityReadAllScope options
+        then Just "activity:read_all"
+        else Nothing
+      , if buildAuthorizeUrlOptions_activityWriteScope options
+        then Just "activity:write"
         else Nothing
       ]
