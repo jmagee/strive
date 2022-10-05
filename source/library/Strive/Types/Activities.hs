@@ -71,7 +71,6 @@ data ActivityDetailed = ActivityDetailed
   , activityDetailed_startDate :: UTCTime
   , activityDetailed_startDateLocal :: UTCTime
   , activityDetailed_startLatlng :: Maybe (Double, Double)
-  , activityDetailed_startLongitude :: Double
   , activityDetailed_timezone :: Text
   , activityDetailed_totalElevationGain :: Double
   , activityDetailed_trainer :: Bool
@@ -160,8 +159,6 @@ instance FromJSON ActivityDetailed where
       .: "start_date_local"
       <*> (v .:? "start_latlng" >>= parseLatlng)
       <*> v
-      .: "start_longitude"
-      <*> v
       .: "timezone"
       <*> v
       .: "total_elevation_gain"
@@ -212,7 +209,6 @@ data ActivitySummary = ActivitySummary
   , activitySummary_startDate :: UTCTime
   , activitySummary_startDateLocal :: UTCTime
   , activitySummary_startLatlng :: Maybe (Double, Double)
-  , activitySummary_startLongitude :: Double
   , activitySummary_timezone :: Text
   , activitySummary_totalElevationGain :: Double
   , activitySummary_trainer :: Bool
@@ -291,8 +287,6 @@ instance FromJSON ActivitySummary where
       <*> v
       .: "start_date_local"
       <*> (v .:? "start_latlng" >>= parseLatlng)
-      <*> v
-      .: "start_longitude"
       <*> v
       .: "timezone"
       <*> v
