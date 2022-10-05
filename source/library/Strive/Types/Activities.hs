@@ -70,7 +70,6 @@ data ActivityDetailed = ActivityDetailed
   , activityDetailed_segmentEfforts :: [EffortDetailed]
   , activityDetailed_startDate :: UTCTime
   , activityDetailed_startDateLocal :: UTCTime
-  , activityDetailed_startLatitude :: Double
   , activityDetailed_startLatlng :: Maybe (Double, Double)
   , activityDetailed_startLongitude :: Double
   , activityDetailed_timezone :: Text
@@ -159,8 +158,6 @@ instance FromJSON ActivityDetailed where
       .: "start_date"
       <*> v
       .: "start_date_local"
-      <*> v
-      .: "start_latitude"
       <*> (v .:? "start_latlng" >>= parseLatlng)
       <*> v
       .: "start_longitude"
@@ -214,7 +211,6 @@ data ActivitySummary = ActivitySummary
   , activitySummary_resourceState :: ResourceState
   , activitySummary_startDate :: UTCTime
   , activitySummary_startDateLocal :: UTCTime
-  , activitySummary_startLatitude :: Double
   , activitySummary_startLatlng :: Maybe (Double, Double)
   , activitySummary_startLongitude :: Double
   , activitySummary_timezone :: Text
@@ -294,8 +290,6 @@ instance FromJSON ActivitySummary where
       .: "start_date"
       <*> v
       .: "start_date_local"
-      <*> v
-      .: "start_latitude"
       <*> (v .:? "start_latlng" >>= parseLatlng)
       <*> v
       .: "start_longitude"
