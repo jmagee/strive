@@ -2,17 +2,18 @@
 module Strive.Actions.Authentication
   ( buildAuthorizeUrl
   , exchangeToken
+  , refreshExchangeToken
   , deauthorize
   ) where
 
 import Data.ByteString.Char8 (unpack)
 import Network.HTTP.Types (Query, renderQuery, toQuery)
 import Strive.Aliases
-  (ApplicationId, ApplicationSecret, AuthorizationCode, RedirectUri, Result)
+  (ApplicationId, ApplicationSecret, AuthorizationCode, RedirectUri, RefreshToken, Result)
 import Strive.Client (Client, buildClient)
 import Strive.Internal.HTTP (post)
 import Strive.Options (BuildAuthorizeUrlOptions)
-import Strive.Types (DeauthorizationResponse, TokenExchangeResponse)
+import Strive.Types (DeauthorizationResponse, RefreshTokenResponse, TokenExchangeResponse)
 
 -- | <http://strava.github.io/api/v3/oauth/#get-authorize>
 buildAuthorizeUrl
@@ -32,7 +33,7 @@ buildAuthorizeUrl clientId redirectUri options =
 exchangeToken
   :: ApplicationId
   -> ApplicationSecret
-  -> AuthorizationCode
+  -> RefreshToken
   -> IO (Result TokenExchangeResponse)
 exchangeToken clientId clientSecret code = do
   client <- buildClient Nothing
@@ -43,6 +44,23 @@ exchangeToken clientId clientSecret code = do
     [ ("client_id", show clientId)
     , ("client_secret", clientSecret)
     , ("code", code)
+    ]
+
+refreshExchangeToken
+  :: ApplicationId
+  -> ApplicationSecret
+  -> AuthorizationCode
+  -> IO (Result RefreshTokenResponse)
+refreshExchangeToken clientId clientSecret refresh = do
+  client <- buildClient Nothing
+  post client resource query
+ where
+  resource = "oauth/token"
+  query =
+    [ ("client_id", show clientId)
+    , ("client_secret", clientSecret)
+    , ("refresh_token", refresh)
+    , ("grant_type", "refresh_token")
     ]
 
 -- | <http://strava.github.io/api/v3/oauth/#deauthorize>

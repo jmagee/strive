@@ -14,6 +14,7 @@ module Strive.Aliases
   , Longitude
   , Name
   , RedirectUri
+  , RefreshToken
   , Result
   , SegmentId
   , StartTime
@@ -39,6 +40,7 @@ type Latitude = Double
 type Longitude = Double
 type Name = String
 type RedirectUri = String
+type RefreshToken = String
 type Result a = Either (Response ByteString, String) a
 type SegmentId = Integer
 type StartTime = UTCTime

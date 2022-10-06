@@ -4,6 +4,7 @@
 module Strive.Types.Authentication
   ( TokenExchangeResponse(..)
   , DeauthorizationResponse(..)
+  , RefreshTokenResponse(..)
   ) where
 
 import Data.Aeson.TH (deriveFromJSON)
@@ -22,6 +23,16 @@ data TokenExchangeResponse = TokenExchangeResponse
   deriving Show
 
 $(deriveFromJSON options ''TokenExchangeResponse)
+
+data RefreshTokenResponse = RefreshTokenResponse
+  { refreshTokenResponse_accessToken :: Text
+  , refreshTokenResponse_expiresAt :: Integer
+  , refreshTokenResponse_expiresIn :: Integer
+  , refreshTokenResponse_refreshToken :: Text
+  }
+  deriving Show
+
+$(deriveFromJSON options ''RefreshTokenResponse)
 
 -- | <http://strava.github.io/api/v3/oauth/#example-response-1>
 data DeauthorizationResponse = DeauthorizationResponse
