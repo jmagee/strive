@@ -15,6 +15,9 @@ import Strive.Types.Athletes (AthleteSummary)
 data TokenExchangeResponse = TokenExchangeResponse
   { tokenExchangeResponse_accessToken :: Text
   , tokenExchangeResponse_athlete :: AthleteSummary
+  , tokenExchangeResponse_expiresAt :: Text
+  , tokenExchangeResponse_expiresIn :: Text
+  , tokenExchangeResponse_refreshToken :: Text
   }
   deriving Show
 

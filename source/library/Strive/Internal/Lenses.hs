@@ -7,6 +7,9 @@
 -- | Lens classes and instances generated with template Haskell.
 module Strive.Internal.Lenses
   ( AccessTokenLens(accessToken)
+  , RefreshTokenLens(refreshToken)
+  , ExpiresAtLens(expiresAt)
+  , ExpiresInLens(expiresIn)
   , AchievementCountLens(achievementCount)
   , ActivityIdLens(activityId)
   , ActivityTypeLens(activityType)
