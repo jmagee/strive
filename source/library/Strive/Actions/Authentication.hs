@@ -33,7 +33,7 @@ buildAuthorizeUrl clientId redirectUri options =
 exchangeToken
   :: ApplicationId
   -> ApplicationSecret
-  -> RefreshToken
+  -> AuthorizationCode
   -> IO (Result TokenExchangeResponse)
 exchangeToken clientId clientSecret code = do
   client <- buildClient Nothing
@@ -49,7 +49,7 @@ exchangeToken clientId clientSecret code = do
 refreshExchangeToken
   :: ApplicationId
   -> ApplicationSecret
-  -> AuthorizationCode
+  -> RefreshToken
   -> IO (Result RefreshTokenResponse)
 refreshExchangeToken clientId clientSecret refresh = do
   client <- buildClient Nothing
