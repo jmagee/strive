@@ -1,6 +1,7 @@
 -- | <http://strava.github.io/api/v3/athlete/>
 module Strive.Actions.Athletes
   ( getCurrentAthlete
+  , getCurrentAthleteSummary
   , getAthlete
   , updateCurrentAthlete
   , getAthleteStats
@@ -18,6 +19,13 @@ import Strive.Types
 -- | <http://strava.github.io/api/v3/athlete/#get-details>
 getCurrentAthlete :: Client -> IO (Result AthleteDetailed)
 getCurrentAthlete client = get client resource query
+ where
+  resource = "api/v3/athlete"
+  query = [] :: Query
+
+-- | <http://strava.github.io/api/v3/athlete/#get-details>
+getCurrentAthleteSummary :: Client -> IO (Result AthleteSummary)
+getCurrentAthleteSummary client = get client resource query
  where
   resource = "api/v3/athlete"
   query = [] :: Query
