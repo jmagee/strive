@@ -74,7 +74,7 @@ data ActivityDetailed = ActivityDetailed
   , activityDetailed_timezone :: Text
   , activityDetailed_totalElevationGain :: Double
   , activityDetailed_trainer :: Bool
-  , activityDetailed_truncated :: Integer
+  --, activityDetailed_truncated :: Integer
   , activityDetailed_type :: ActivityType
   , activityDetailed_uploadId :: Maybe Integer
   , activityDetailed_weightedAverageWatts :: Maybe Integer
@@ -164,8 +164,8 @@ instance FromJSON ActivityDetailed where
       .: "total_elevation_gain"
       <*> v
       .: "trainer"
-      <*> v
-      .: "truncated"
+      {-<*> v-}
+      {-.: "truncated"-}
       <*> v
       .: "type"
       <*> v

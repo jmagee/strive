@@ -160,7 +160,7 @@ module Strive.Internal.Lenses
   , TimezoneLens(timezone)
   , TotalElevationGainLens(totalElevationGain)
   , TrainerLens(trainer)
-  , TruncatedLens(truncated)
+  --, TruncatedLens(truncated)
   , Type_Lens(type_)
   , UidLens(uid)
   , UpdatedAtLens(updatedAt)
