@@ -49,7 +49,7 @@ data ActivityDetailed = ActivityDetailed
   , activityDetailed_endLatlng :: Maybe (Double, Double)
   , activityDetailed_externalId :: Maybe Text
   , activityDetailed_flagged :: Bool
-  , activityDetailed_gear :: GearSummary
+  , activityDetailed_gear :: Maybe GearSummary
   , activityDetailed_gearId :: Maybe Text
   , activityDetailed_hasKudoed :: Bool
   , activityDetailed_id :: Integer
@@ -116,7 +116,7 @@ instance FromJSON ActivityDetailed where
       <*> v
       .: "flagged"
       <*> v
-      .: "gear"
+      .:? "gear"
       <*> v
       .:? "gear_id"
       <*> v
