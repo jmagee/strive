@@ -30,9 +30,9 @@ data SegmentDetailed = SegmentDetailed
   , segmentDetailed_effortCount :: Integer
   , segmentDetailed_elevationHigh :: Double
   , segmentDetailed_elevationLow :: Double
-  , segmentDetailed_endLatitude :: Double
+  --, segmentDetailed_endLatitude :: Double
   , segmentDetailed_endLatlng :: (Double, Double)
-  , segmentDetailed_endLongitude :: Double
+  --, segmentDetailed_endLongitude :: Double
   , segmentDetailed_hazardous :: Bool
   , segmentDetailed_id :: Integer
   , segmentDetailed_map :: PolylineDetailed
@@ -42,9 +42,9 @@ data SegmentDetailed = SegmentDetailed
   , segmentDetailed_resourceState :: ResourceState
   , segmentDetailed_starCount :: Integer
   , segmentDetailed_starred :: Bool
-  , segmentDetailed_startLatitude :: Double
+  --, segmentDetailed_startLatitude :: Double
   , segmentDetailed_startLatlng :: (Double, Double)
-  , segmentDetailed_startLongitude :: Double
+  --, segmentDetailed_startLongitude :: Double
   , segmentDetailed_state :: Text
   , segmentDetailed_totalElevationGain :: Double
   , segmentDetailed_updatedAt :: UTCTime
@@ -63,18 +63,18 @@ data SegmentSummary = SegmentSummary
   , segmentSummary_distance :: Double
   , segmentSummary_elevationHigh :: Double
   , segmentSummary_elevationLow :: Double
-  , segmentSummary_endLatitude :: Double
+  --, segmentSummary_endLatitude :: Double
   , segmentSummary_endLatlng :: (Double, Double)
-  , segmentSummary_endLongitude :: Double
+  --, segmentSummary_endLongitude :: Double
   , segmentSummary_id :: Integer
   , segmentSummary_maximumGrade :: Double
   , segmentSummary_name :: Text
   , segmentSummary_private :: Bool
   , segmentSummary_resourceState :: ResourceState
   , segmentSummary_starred :: Bool
-  , segmentSummary_startLatitude :: Double
+  --, segmentSummary_startLatitude :: Double
   , segmentSummary_startLatlng :: (Double, Double)
-  , segmentSummary_startLongitude :: Double
+  --, segmentSummary_startLongitude :: Double
   , segmentSummary_state :: Text
   }
   deriving Show
