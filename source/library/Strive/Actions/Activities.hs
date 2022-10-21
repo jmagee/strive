@@ -2,6 +2,7 @@
 module Strive.Actions.Activities
   ( createActivity
   , getActivity
+  , getActivityDetailed
   , updateActivity
   , deleteActivity
   , getCurrentActivities
@@ -59,6 +60,14 @@ createActivity client name type_ startDateLocal elapsedTime options = post
 getActivity
   :: Client -> ActivityId -> GetActivityOptions -> IO (Result ActivitySummary)
 getActivity client activityId options = get client resource query
+ where
+  resource = "api/v3/activities/" <> show activityId
+  query = toQuery options
+
+-- | <http://strava.github.io/api/v3/activities/#get-details>
+getActivityDetailed
+  :: Client -> ActivityId -> GetActivityOptions -> IO (Result ActivityDetailed)
+getActivityDetailed client activityId options = get client resource query
  where
   resource = "api/v3/activities/" <> show activityId
   query = toQuery options
