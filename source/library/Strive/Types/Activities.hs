@@ -17,6 +17,7 @@ import Data.Aeson.TH (deriveFromJSON)
 import Data.Aeson.Types (Parser, withObject)
 import Data.Text (Text)
 import Data.Time.Clock (UTCTime)
+import Data.Time.LocalTime (LocalTime)
 import Strive.Enums (ActivityType, ActivityZoneType, ResourceState)
 import Strive.Internal.TH (options)
 import Strive.Types.Athletes (AthleteMeta)
@@ -69,7 +70,7 @@ data ActivityDetailed = ActivityDetailed
   , activityDetailed_resourceState :: ResourceState
   , activityDetailed_segmentEfforts :: [EffortDetailed]
   , activityDetailed_startDate :: UTCTime
-  , activityDetailed_startDateLocal :: UTCTime
+  , activityDetailed_startDateLocal :: LocalTime
   , activityDetailed_startLatlng :: Maybe (Double, Double)
   , activityDetailed_timezone :: Text
   , activityDetailed_totalElevationGain :: Double
@@ -207,7 +208,7 @@ data ActivitySummary = ActivitySummary
   , activitySummary_private :: Bool
   , activitySummary_resourceState :: ResourceState
   , activitySummary_startDate :: UTCTime
-  , activitySummary_startDateLocal :: UTCTime
+  , activitySummary_startDateLocal :: LocalTime
   , activitySummary_startLatlng :: Maybe (Double, Double)
   , activitySummary_timezone :: Text
   , activitySummary_totalElevationGain :: Double
@@ -338,7 +339,7 @@ data ActivityLapSummary = ActivityLapSummary
   , activityLapSummary_name :: Text
   , activityLapSummary_resourceState :: ResourceState
   , activityLapSummary_startDate :: UTCTime
-  , activityLapSummary_startDateLocal :: UTCTime
+  , activityLapSummary_startDateLocal :: LocalTime
   , activityLapSummary_startIndex :: Integer
   , activityLapSummary_totalElevationGain :: Double
   }
