@@ -45,7 +45,7 @@ data SegmentDetailed = SegmentDetailed
   --, segmentDetailed_startLatitude :: Double
   , segmentDetailed_startLatlng :: (Double, Double)
   --, segmentDetailed_startLongitude :: Double
-  , segmentDetailed_state :: Text
+  , segmentDetailed_state :: Maybe Text
   , segmentDetailed_totalElevationGain :: Double
   , segmentDetailed_updatedAt :: UTCTime
   }
@@ -75,7 +75,7 @@ data SegmentSummary = SegmentSummary
   --, segmentSummary_startLatitude :: Double
   , segmentSummary_startLatlng :: (Double, Double)
   --, segmentSummary_startLongitude :: Double
-  , segmentSummary_state :: Text
+  , segmentSummary_state :: Maybe Text
   }
   deriving Show
 
