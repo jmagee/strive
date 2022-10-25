@@ -24,7 +24,7 @@ data SegmentDetailed = SegmentDetailed
   , segmentDetailed_averageGrade :: Double
   , segmentDetailed_city :: Maybe Text
   , segmentDetailed_climbCategory :: Integer
-  , segmentDetailed_country :: Text
+  , segmentDetailed_country :: Maybe Text
   , segmentDetailed_createdAt :: UTCTime
   , segmentDetailed_distance :: Double
   , segmentDetailed_effortCount :: Integer
@@ -59,7 +59,7 @@ data SegmentSummary = SegmentSummary
   , segmentSummary_averageGrade :: Double
   , segmentSummary_city :: Maybe Text
   , segmentSummary_climbCategory :: Integer
-  , segmentSummary_country :: Text
+  , segmentSummary_country :: Maybe Text
   , segmentSummary_distance :: Double
   , segmentSummary_elevationHigh :: Double
   , segmentSummary_elevationLow :: Double
