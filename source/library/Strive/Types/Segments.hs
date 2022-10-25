@@ -22,7 +22,7 @@ data SegmentDetailed = SegmentDetailed
   { segmentDetailed_activityType :: ActivityType
   , segmentDetailed_athleteCount :: Integer
   , segmentDetailed_averageGrade :: Double
-  , segmentDetailed_city :: Text
+  , segmentDetailed_city :: Maybe Text
   , segmentDetailed_climbCategory :: Integer
   , segmentDetailed_country :: Text
   , segmentDetailed_createdAt :: UTCTime
@@ -57,7 +57,7 @@ $(deriveFromJSON options ''SegmentDetailed)
 data SegmentSummary = SegmentSummary
   { segmentSummary_activityType :: ActivityType
   , segmentSummary_averageGrade :: Double
-  , segmentSummary_city :: Text
+  , segmentSummary_city :: Maybe Text
   , segmentSummary_climbCategory :: Integer
   , segmentSummary_country :: Text
   , segmentSummary_distance :: Double
