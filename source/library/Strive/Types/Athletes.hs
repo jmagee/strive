@@ -75,7 +75,7 @@ $(deriveFromJSON options ''AthleteSummary)
 -- | <http://strava.github.io/api/v3/athlete/#meta>
 data AthleteMeta = AthleteMeta
   { athleteMeta_id :: Integer
-  , athleteMeta_resourceState :: ResourceState
+  , athleteMeta_resourceState :: Maybe ResourceState
   }
   deriving Show
 
