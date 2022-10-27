@@ -15,6 +15,7 @@ module Strive.Actions
   , module Strive.Actions.Segments
   , module Strive.Actions.Streams
   , module Strive.Actions.Uploads
+  , module Strive.Actions.Webhooks
   ) where
 
 import Strive.Actions.Activities
@@ -30,3 +31,4 @@ import Strive.Actions.Photos
 import Strive.Actions.Segments
 import Strive.Actions.Streams
 import Strive.Actions.Uploads
+import Strive.Actions.Webhooks
