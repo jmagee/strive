@@ -4,12 +4,12 @@ module Strive.Actions.Webhooks
   ) where
 
 import Network.HTTP.Types (toQuery)
-import Strive.Aliases (ApplicationSecret, RedirectUri, Result)
+import Strive.Aliases (ApplicationId, ApplicationSecret, RedirectUri, Result)
 import Strive.Client (Client, buildClient)
 import Strive.Internal.HTTP (buildRequest, get, performRequest, post, put)
 
 createSubscription
-  :: Client
+  :: ApplicationId
   -> ApplicationSecret
   -> RedirectUri
   -> String
