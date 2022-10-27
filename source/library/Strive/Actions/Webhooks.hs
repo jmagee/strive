@@ -18,7 +18,7 @@ createSubscription
   -> IO (Result ())
 createSubscription clientId secret redirect verify = do
   client <- buildClient Nothing
-  get client resource query
+  post client resource query
  where
   resource = "api/v3/push_subscriptions"
   query =
@@ -36,7 +36,7 @@ viewSubscription
   -> IO (Result ())
 viewSubscription clientId secret = do
   client <- buildClient Nothing
-  post client resource query
+  get client resource query
  where
   resource = "api/v3/push_subscriptions"
   query =
