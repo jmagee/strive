@@ -23,6 +23,6 @@ createSubscription clientId secret redirect verify = do
     toQuery
       [ ("client_id", show clientId)
       , ("client_secret", secret)
-      , ("redirect_uri", redirect)
+      , ("callback_url", redirect)
       , ("verify_token", verify)
       ]
