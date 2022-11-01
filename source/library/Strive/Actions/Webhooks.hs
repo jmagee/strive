@@ -35,7 +35,7 @@ createSubscription clientId secret redirect verify = do
 viewSubscription
   :: ApplicationId
   -> ApplicationSecret
-  -> IO (Result Subscription)
+  -> IO (Result [Subscription])
 viewSubscription clientId secret = do
   client <- buildClient Nothing
   get client resource query
