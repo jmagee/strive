@@ -4,6 +4,7 @@
 module Strive.Types.Subscription
   ( Subscription(..)
   , SubscriptionDetail(..)
+  , SubscriptionEvent(..)
   ) where
 
 import Data.Aeson.TH (deriveFromJSON)
@@ -31,3 +32,16 @@ data SubscriptionDetail = SubscriptionDetail
   deriving Show
 
 $(deriveFromJSON options ''SubscriptionDetail)
+
+-- | <https://developers.strava.com/docs/webhooks>
+data SubscriptionEvent = SubscriptionEvent
+  { subscriptionEvent_objectType :: Text
+  , subscriptionEvent_objectId :: Integer
+  , subscriptionEvent_aspectType :: Text
+  , subscriptionEvent_updates :: [(Text, Text)]
+  , subscriptionEvent_ownerId :: Integer
+  , subscriptionEvent_subscriptionId :: Integer
+  , subscriptionEvent_eventTime :: Integer
+  }
+
+$(deriveFromJSON options ''SubscriptionEvent)
