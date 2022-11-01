@@ -57,7 +57,7 @@ deleteSubscription clientId secret sub = do
   client <- buildClient Nothing
   delete client resource query
  where
-  resource = "api/v3/push_subscriptions" <> show sub
+  resource = "api/v3/push_subscriptions/" <> show sub
   query =
     toQuery
       [ ("client_id", show clientId)
