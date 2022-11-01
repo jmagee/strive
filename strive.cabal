@@ -109,6 +109,7 @@ library
     Strive.Types.Polylines
     Strive.Types.Segments
     Strive.Types.Streams
+    Strive.Types.Subscription
     Strive.Types.Uploads
     Strive.Utilities
   hs-source-dirs: source/library

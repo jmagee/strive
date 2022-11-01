@@ -13,6 +13,7 @@ module Strive.Types
   , module Strive.Types.Polylines
   , module Strive.Types.Segments
   , module Strive.Types.Streams
+  , module Strive.Types.Subscription
   , module Strive.Types.Uploads
   ) where
 
@@ -27,4 +28,5 @@ import Strive.Types.Photos
 import Strive.Types.Polylines
 import Strive.Types.Segments
 import Strive.Types.Streams
+import Strive.Types.Subscription
 import Strive.Types.Uploads
