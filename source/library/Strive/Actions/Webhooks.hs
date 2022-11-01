@@ -5,7 +5,10 @@ module Strive.Actions.Webhooks
   , viewSubscription
   ) where
 
-import Network.HTTP.Types (toQuery)
+import Network.HTTP.Client (responseBody, responseStatus)
+import Network.HTTP.Types (methodDelete, toQuery, noContent204)
+import Data.ByteString.Char8 (unpack)
+import Data.ByteString.Lazy (toStrict)
 import Strive.Aliases (ApplicationId, ApplicationSecret, RedirectUri, Result, SubscriptionId)
 import Strive.Client (Client, buildClient)
 import Strive.Types (Subscription, SubscriptionDetail)
@@ -55,7 +58,14 @@ deleteSubscription
   -> IO (Result ())
 deleteSubscription clientId secret sub = do
   client <- buildClient Nothing
-  delete client resource query
+  --response <- delete client resource query
+  request <- buildRequest methodDelete client resource query
+  response <- performRequest client request
+  return
+    (if responseStatus response == noContent204
+      then Right ()
+      else Left (response, unpack (toStrict (responseBody response)))
+    )
  where
   resource = "api/v3/push_subscriptions/" <> show sub
   query =
