@@ -8,7 +8,7 @@ module Strive.Actions.Webhooks
 import Network.HTTP.Types (toQuery)
 import Strive.Aliases (ApplicationId, ApplicationSecret, RedirectUri, Result, SubscriptionId)
 import Strive.Client (Client, buildClient)
-import Strive.Types (Subscription)
+import Strive.Types (Subscription, SubscriptionDetail)
 import Strive.Internal.HTTP (buildRequest, get, performRequest, post, put, delete)
 
 -- | Create a webhook subscription
@@ -35,7 +35,7 @@ createSubscription clientId secret redirect verify = do
 viewSubscription
   :: ApplicationId
   -> ApplicationSecret
-  -> IO (Result [Subscription])
+  -> IO (Result [SubscriptionDetail])
 viewSubscription clientId secret = do
   client <- buildClient Nothing
   get client resource query

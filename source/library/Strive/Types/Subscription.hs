@@ -3,6 +3,7 @@
 -- | <https://developers.strava.com/docs/webhooks>
 module Strive.Types.Subscription
   ( Subscription(..)
+  , SubscriptionDetail(..)
   ) where
 
 import Data.Aeson.TH (deriveFromJSON)
@@ -14,11 +15,19 @@ import Strive.Types.Athletes (AthleteSummary)
 -- | <https://developers.strava.com/docs/webhooks>
 data Subscription = Subscription
   { subscription_id :: Integer
-  , subscription_applicationId :: Integer
-  , subscription_callbackUrl :: Text
-  , subscription_createdAt :: UTCTime
-  , subscription_updatedAt :: UTCTime
   }
   deriving Show
 
 $(deriveFromJSON options ''Subscription)
+
+-- | <https://developers.strava.com/docs/webhooks>
+data SubscriptionDetail = SubscriptionDetail
+  { subscriptionDetail_id :: Integer
+  , subscriptionDetail_applicationId :: Integer
+  , subscriptionDetail_callbackUrl :: Text
+  , subscriptionDetail_createdAt :: UTCTime
+  , subscriptionDetail_updatedAt :: UTCTime
+  }
+  deriving Show
+
+$(deriveFromJSON options ''SubscriptionDetail)
