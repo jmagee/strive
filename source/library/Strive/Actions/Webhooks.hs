@@ -1,13 +1,14 @@
 -- | https://developers.strava.com/docs/webhooks/
 module Strive.Actions.Webhooks
   ( createSubscription
+  , deleteSubscription
   , viewSubscription
   ) where
 
 import Network.HTTP.Types (toQuery)
-import Strive.Aliases (ApplicationId, ApplicationSecret, RedirectUri, Result)
+import Strive.Aliases (ApplicationId, ApplicationSecret, RedirectUri, Result, SubscriptionId)
 import Strive.Client (Client, buildClient)
-import Strive.Internal.HTTP (buildRequest, get, performRequest, post, put)
+import Strive.Internal.HTTP (buildRequest, get, performRequest, post, put, delete)
 
 -- | Create a webhook subscription
 createSubscription
@@ -39,6 +40,23 @@ viewSubscription clientId secret = do
   get client resource query
  where
   resource = "api/v3/push_subscriptions"
+  query =
+    toQuery
+      [ ("client_id", show clientId)
+      , ("client_secret", secret)
+      ]
+
+-- | Delete any webhook subscription
+deleteSubscription
+  :: ApplicationId
+  -> ApplicationSecret
+  -> SubscriptionId
+  -> IO (Result ())
+deleteSubscription clientId secret sub = do
+  client <- buildClient Nothing
+  delete client resource query
+ where
+  resource = "api/v3/push_subscriptions" <> show sub
   query =
     toQuery
       [ ("client_id", show clientId)

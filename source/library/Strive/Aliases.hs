@@ -19,6 +19,7 @@ module Strive.Aliases
   , SegmentId
   , StartTime
   , StreamId
+  , SubscriptionId
   , UploadId
   ) where
 
@@ -45,4 +46,5 @@ type Result a = Either (Response ByteString, String) a
 type SegmentId = Integer
 type StartTime = UTCTime
 type StreamId = Integer
+type SubscriptionId = Integer
 type UploadId = Integer
