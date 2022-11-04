@@ -43,5 +43,6 @@ data SubscriptionEvent = SubscriptionEvent
   , subscriptionEvent_subscriptionId :: Integer
   , subscriptionEvent_eventTime :: Integer
   }
+  deriving Show
 
 $(deriveFromJSON options ''SubscriptionEvent)
